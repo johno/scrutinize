@@ -3,7 +3,8 @@ var scrutinize = require('..');
 
 describe('scrutinize', function() {
 
-  it('should do something awesome', function() {
-    assert.equal(camelizedPackageName(), true);
+  it('should do something awesome', function(done) {
+    this.timeout(60000);
+    scrutinize('cnn.com', {}, done);
   });
 });

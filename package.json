@@ -24,6 +24,8 @@
     "cli-table": "^0.3.1",
     "css-statistics": "^0.1.0",
     "get-css": "^0.1.0",
+    "humanize-url": "^1.0.0",
+    "normalize-url": "^1.0.0",
     "psi": "^1.0.3",
     "tmi": "^0.2.2"
   },
