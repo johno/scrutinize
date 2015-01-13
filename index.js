@@ -1,7 +1,6 @@
 'use strict';
 
 var psi = require('psi');
-var tmi = require('tmi');
 var getCss = require('get-css');
 var Table = require('cli-table');
 var cssStats = require('css-statistics');
@@ -14,12 +13,18 @@ module.exports = function scrutinize(url, options, callback) {
   }
 
   options = options || {};
+  options.verbose = options.verbose || false;
+  options.key = options.key || process.env.GAPPS_API_KEY;
+  options.url = url;
+
   callback = callback || function() {};
+
+  var scrutinyData = {};
 
   var normalizedUrl = normalizeUrl(url);
   var humanizedUrl = humanizeUrl(url);
 
-  psi(url, { key: process.env.GAPPS_API_KEY }, function(err, data) {
+  psi(url, options, function(err, data) {
     var table = new Table({
       head: [humanizedUrl, data.title],
       colWidths: [40, 120]
@@ -27,6 +32,12 @@ module.exports = function scrutinize(url, options, callback) {
 
     var ruleResults = data.formattedResults.ruleResults;
     var pageStats = data.pageStats;
+
+    scrutinyData.psi = {};
+    scrutinyData.psi.score = data.score;
+    scrutinyData.psi.numberResources = pageStats.numberResources;
+    scrutinyData.psi.numberHosts = pageStats.numberHosts;
+    scrutinyData.psi.ruleResults = [];
 
     table.push(
       { 'Page Speed Score': data.score },
@@ -39,8 +50,9 @@ module.exports = function scrutinize(url, options, callback) {
       var headers = [];
 
       resultObject.urlBlocks.forEach(function(urlBlock) {
-        // console.log(urlBlock);
-        headers.push(formatString(urlBlock.header.format, urlBlock.header.args));
+        var formattedString = formatString(urlBlock.header.format, urlBlock.header.args);
+        scrutinyData.psi.ruleResults.push(formattedString);
+        headers.push(formattedString);
       });
 
       tableRow[resultObject.localizedRuleName] = headers.join('\n');
@@ -50,8 +62,12 @@ module.exports = function scrutinize(url, options, callback) {
       }
     });
 
-    console.log(table.toString());
-    callback(err, data);
+    if (options.verbose) {
+      console.log('Page Speed Insights')
+      console.log(table.toString());
+    }
+
+    callback(err, scrutinyData);
   });
 }
 

@@ -5,6 +5,6 @@ describe('scrutinize', function() {
 
   it('should do something awesome', function(done) {
     this.timeout(60000);
-    scrutinize('cnn.com', {}, done);
+    scrutinize('cnn.com', { verbose: true }, done);
   });
 });
