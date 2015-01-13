@@ -1,0 +1,33 @@
+{
+  "name": "scrutinize",
+  "description": "Scrutinize a url by analyzing CSS, HTML, images, pagespeed, etc.",
+  "author": "John Otander",
+  "version": "0.0.1",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnotander/scrutinize.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnotander/scrutinize/issues"
+  },
+  "homepage": "https://github.com/johnotander/scrutinize",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "css-statistics": "^0.1.0",
+    "get-css": "^0.1.0",
+    "psi": "^1.0.3",
+    "tmi": "^0.2.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
