@@ -25,6 +25,10 @@ module.exports = function scrutinize(url, options, callback) {
   var humanizedUrl = humanizeUrl(url);
 
   psi(url, options, function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+
     var table = new Table({
       head: [humanizedUrl, data.title],
       colWidths: [40, 120]
@@ -82,7 +86,35 @@ module.exports = function scrutinize(url, options, callback) {
       console.log(table.toString());
     }
 
-    callback(err, scrutinyData);
+    getCss(normalizedUrl).then(function(css) {
+      var stats = cssStats(css.css).aggregates;
+
+      scrutinyData.css = {};
+      scrutinyData.css.selectorCount = stats.selectors;
+      scrutinyData.css.mediaQueriesCount = stats.mediaQueries.length;
+      scrutinyData.css.colors = stats.colors.total;
+      scrutinyData.css.widths = stats.widths.total;
+      scrutinyData.css.fontSizes = stats.fontSizes.total;
+      scrutinyData.css.backgroundColors = stats.backgroundColors.total;
+
+      var table = new Table({
+        head: [humanizedUrl, data.title],
+        colWidths: [40, 120]
+      });
+
+      table.push(
+        { 'Total Selectors': scrutinyData.css.selectorCount },
+        { 'Media Queries': scrutinyData.css.mediaQueriesCount },
+        { 'Colors': scrutinyData.css.colors },
+        { 'Widths': scrutinyData.css.widths },
+        { 'Font Sizes': scrutinyData.css.fontSizes },
+        { 'Background Colors': scrutinyData.css.backgroundColors }
+      );
+      console.log('CSS Stats');
+      console.log(table.toString());
+
+      callback(err, scrutinyData);
+    });
   });
 }
 
