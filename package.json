@@ -1,6 +1,6 @@
 {
   "name": "scrutinize",
-  "description": "Scrutinize a url by analyzing CSS, HTML, images, pagespeed, etc.",
+  "description": "Scrutinize a url by analyzing CSS, HTML, accessibility, images, pagespeed, etc.",
   "author": "John Otander",
   "version": "0.0.3",
   "main": "index.js",
@@ -14,7 +14,15 @@
     "type": "git",
     "url": "https://github.com/johnotander/scrutinize.git"
   },
-  "keywords": [],
+  "keywords": [
+    "scrutinize",
+    "css",
+    "html",
+    "page-speed",
+    "images",
+    "a11y",
+    "accessibility"
+  ],
   "preferGlobal": true,
   "bin": {
     "scrutinize": "./bin/scrutinize"
@@ -25,6 +33,7 @@
   },
   "homepage": "https://github.com/johnotander/scrutinize",
   "dependencies": {
+    "a11y": "^0.2.3",
     "cli-table": "^0.3.1",
     "commander": "^2.6.0",
     "css-statistics": "^0.1.0",
