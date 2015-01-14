@@ -110,6 +110,7 @@ module.exports = function scrutinize(url, options, callback) {
         { 'Font Sizes': scrutinyData.css.fontSizes },
         { 'Background Colors': scrutinyData.css.backgroundColors }
       );
+
       console.log('CSS Stats');
       console.log(table.toString());
 
