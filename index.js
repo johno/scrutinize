@@ -1,9 +1,11 @@
 'use strict';
 
 var psi = require('psi');
+var a11y = require('a11y');
 var getCss = require('get-css');
-var Table = require('cli-table');
 var cssStats = require('css-statistics');
+
+var Table = require('cli-table');
 var humanizeUrl = require('humanize-url');
 var normalizeUrl = require('normalize-url');
 
@@ -113,7 +115,31 @@ module.exports = function scrutinize(url, options, callback) {
 
       console.log('CSS Stats');
       console.log(table.toString());
+    });
 
+    a11y(url, function(err, reports) {
+      scrutinyData.a11y = {};
+      scrutinyData.a11y.failures = [];
+
+      reports.audit.forEach(function(el) {
+        if (el.result === 'FAIL') {
+          scrutinyData.a11y.failures.push(el);
+        }
+      });
+
+      var table = new Table({
+        head: [humanizedUrl, data.title],
+        colWidths: [40, 120]
+      });
+
+      scrutinyData.a11y.failures.forEach(function(failure) {
+        var row = {};
+        row[failure.severity] = failure.heading + '\n' + failure.elements;
+        table.push(row);
+      });
+
+      console.log('A11y');
+      console.log(table.toString());
       callback(err, scrutinyData);
     });
   });
