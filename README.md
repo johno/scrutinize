@@ -10,7 +10,11 @@ Scrutinize a url by analyzing CSS, HTML, images, pagespeed, etc.
 
 ```bash
 npm install --save scrutinize
+export GAPPS_API_KEY=<YOUR GAPPS API KEY>
 ```
+
+If you don't already have a Google Apps Developer API Key, you can get one here:
+<https://console.developers.google.com>.
 
 ## Usage
 
