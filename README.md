@@ -4,7 +4,7 @@
 
 __Currently under development.__
 
-Scrutinize a url by analyzing CSS, HTML, images, pagespeed, etc.
+Scrutinize a url by analyzing CSS, HTML, accessibility, images, pagespeed, etc.
 
 ## Installation
 
@@ -91,6 +91,14 @@ scrutinize furtive.co
 # │                                        │ #buttons > .w100--s.my1.btn--green                                                                                     │
 # └────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
+
+## Thanks to the following
+
+* cssstats
+* a11y
+* psi
+* commander
+* cli-table
 
 ## License
 
