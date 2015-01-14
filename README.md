@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/johnotander/scrutinize.png?branch=master)](https://travis-ci.org/johnotander/scrutinize)
 
+__Currently under development.__
+
 Scrutinize a url by analyzing CSS, HTML, images, pagespeed, etc.
 
 ## Installation
@@ -12,8 +14,43 @@ npm install --save scrutinize
 
 ## Usage
 
+```javascript
+var scrutinize = require('scrutinize');
+
+scrutinize('furtive.co', { key: process.env.GAPPS_API_KEY }, function(err, data) {
+  console.log(data);
+});
+```
+
+#### Using the CLI
+
 ```bash
-// ...
+scrutinize furtive.co
+
+# Page Speed Insights
+# ┌────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+# │ furtive.co                             │ Furtive CSS                                                                                                            │
+# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+# │ Page Speed Score                       │ 89                                                                                                                     │
+# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+# │ Requests                               │ 5 files from 3 hosts                                                                                                   │
+# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+# │ Leverage browser caching               │ Setting an expiry date or a maximum age in the HTTP headers for static resources instructs the browser to load previo… │
+# │                                        │ Leverage browser caching for the following cacheable resources:                                                        │
+# │                                        │                                                                                                                        │
+# │                                        │ http://www.gravatar.com/avatar/2e52ef263083c77e2a0a24454dc6f369.png                                                    │
+# │                                        │ http://furtive.co/site/index.furtive.min.css                                                                           │
+# │                                        │ http://www.google-analytics.com/analytics.js                                                                           │
+# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+# │ Eliminate render-blocking JavaScript … │ Your page has 1 blocking CSS resources. This causes a delay in rendering your page.                                    │
+# │                                        │ None of the above-the-fold content on your page could be rendered without waiting for the following resources to load… │
+# │                                        │ Optimize CSS Delivery of the following:                                                                                │
+# │                                        │                                                                                                                        │
+# │                                        │ http://furtive.co/site/index.furtive.min.css                                                                           │
+# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+# │ Size tap targets appropriately         │ Some of the links/buttons on your webpage may be too small for a user to easily tap on a touchscreen. Consider making… │
+# │                                        │ The following tap targets are close to other nearby tap targets and may need additional spacing around them.           │
+# └────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## License
