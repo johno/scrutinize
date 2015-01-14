@@ -48,9 +48,24 @@ module.exports = function scrutinize(url, options, callback) {
       var resultObject = ruleResults[key];
       var tableRow = {};
       var headers = [];
+      var urls = [];
 
       resultObject.urlBlocks.forEach(function(urlBlock) {
+        urls = [];
+
+        (urlBlock.urls || []).forEach(function(url) {
+          (url.result.args || []).forEach(function(urlArg) {
+            if (urlArg.type === 'URL') {
+              urls.push(urlArg.value);
+            }
+          });
+        });
         var formattedString = formatString(urlBlock.header.format, urlBlock.header.args);
+
+        if (urls.length) {
+          formattedString = formattedString + '\n\n' + urls.join('\n');
+        }
+
         scrutinyData.psi.ruleResults.push(formattedString);
         headers.push(formattedString);
       });
