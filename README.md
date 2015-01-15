@@ -2,8 +2,6 @@
 
 [![Build Status](https://secure.travis-ci.org/johnotander/scrutinize.png?branch=master)](https://travis-ci.org/johnotander/scrutinize)
 
-__Currently under development.__
-
 Scrutinize a url by analyzing CSS, HTML, accessibility, images, pagespeed, etc.
 
 ## Installation
@@ -51,65 +49,61 @@ npm i -g scrutinize
 ```bash
 scrutinize furtive.co
 
-# Page Speed Insights
-# ┌────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-# │ furtive.co                             │ Furtive CSS                                                                                                            │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Page Speed Score                       │ 89                                                                                                                     │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Requests                               │ 5 files from 3 hosts                                                                                                   │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Leverage browser caching               │ Setting an expiry date or a maximum age in the HTTP headers for static resources instructs the browser to load previo… │
-# │                                        │ Leverage browser caching for the following cacheable resources:                                                        │
-# │                                        │                                                                                                                        │
-# │                                        │ http://www.gravatar.com/avatar/2e52ef263083c77e2a0a24454dc6f369.png                                                    │
-# │                                        │ http://furtive.co/site/index.furtive.min.css                                                                           │
-# │                                        │ http://www.google-analytics.com/analytics.js                                                                           │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Eliminate render-blocking JavaScript … │ Your page has 1 blocking CSS resources. This causes a delay in rendering your page.                                    │
-# │                                        │ None of the above-the-fold content on your page could be rendered without waiting for the following resources to load… │
-# │                                        │ Optimize CSS Delivery of the following:                                                                                │
-# │                                        │                                                                                                                        │
-# │                                        │ http://furtive.co/site/index.furtive.min.css                                                                           │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Size tap targets appropriately         │ Some of the links/buttons on your webpage may be too small for a user to easily tap on a touchscreen. Consider making… │
-# │                                        │ The following tap targets are close to other nearby tap targets and may need additional spacing around them.           │
-# └────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-# CSS Stats
-# ┌────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-# │ furtive.co                             │ Furtive CSS                                                                                                            │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Total Selectors                        │ 159                                                                                                                    │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Media Queries                          │ 3                                                                                                                      │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Colors                                 │ 23                                                                                                                     │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Widths                                 │ 3                                                                                                                      │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Font Sizes                             │ 12                                                                                                                     │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Background Colors                      │ 17                                                                                                                     │
-# └────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+# Furtive CSS
+#
+# 5 files from 3 hosts
+#
+# Leverage browser caching
+# Setting an expiry date or a maximum age in the HTTP headers for static resources instructs the browser to load previously downloaded resources from local disk rather than over the network.
+# Leverage browser caching for the following cacheable resources:
+#
+# http://www.gravatar.com/avatar/2e52ef263083c77e2a0a24454dc6f369.png (5 minutes)
+# http://furtive.co/site/index.furtive.min.css (10 minutes)
+# http://www.google-analytics.com/analytics.js (2 hours)
+#
+# Eliminate render-blocking JavaScript and CSS in above-the-fold content
+# Your page has 1 blocking CSS resources. This causes a delay in rendering your page.None of the above-the-fold content on your page could be rendered without waiting for the following resources to load. Try to defer or asynchronously load blocking resources, or inline the critical portions of those resources directly in the HTML.
+# Optimize CSS Delivery of the following:
+#
+# http://furtive.co/site/index.furtive.min.css
+#
+# Size tap targets appropriately
+# Some of the links/buttons on your webpage may be too small for a user to easily tap on a touchscreen. Consider making these tap targets larger to provide a better user experience.
+# The following tap targets are close to other nearby tap targets and may need additional spacing around them.
+#
+# The tap target <a href="http://johnotander.com">John Otander</a> and 1 others are close to other tap targets.
+#
+#
+#
 # A11y
-# ┌────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-# │ furtive.co                             │ Furtive CSS                                                                                                            │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Warning                                │ These elements are focusable but either invisible or obscured by another element                                       │
-# │                                        │                                                                                                                        │
-# │                                        │ body > .p2.measure:nth-of-type(5) > .py2 > CODE:nth-of-type(3) > A                                                     │
-# │                                        │ body > .txt--center.p2 > .small.p2 > A                                                                                 │
-# │                                        │ body > .txt--center.p2 > .small.p2 > A:nth-of-type(2)                                                                  │
-# │                                        │ body > .txt--center.p2 > .small.p2 > A:nth-of-type(3)                                                                  │
-# ├────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-# │ Warning                                │ Text elements should have a reasonable contrast ratio                                                                  │
-# │                                        │                                                                                                                        │
-# │                                        │ #why-furtive > .h4:nth-of-type(2) > A                                                                                  │
-# │                                        │ #why-furtive > .h4:nth-of-type(2) > A:nth-of-type(2)                                                                   │
-# │                                        │ #grid > .measure.p2 > .h4 > A                                                                                          │
-# │                                        │ #buttons > .w100--s.my1.btn--blue                                                                                      │
-# │                                        │ #buttons > .w100--s.my1.btn--green                                                                                     │
-# └────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+#
+# Warning
+# These elements are focusable but either invisible or obscured by another element
+#
+# body > .p2.measure:nth-of-type(5) > .py2 > CODE:nth-of-type(3) > A
+# body > .txt--center.p2 > .small.p2 > A
+# body > .txt--center.p2 > .small.p2 > A:nth-of-type(2)
+# body > .txt--center.p2 > .small.p2 > A:nth-of-type(3)
+#
+# Warning
+# Text elements should have a reasonable contrast ratio
+#
+# #why-furtive > .h4:nth-of-type(2) > A
+# #why-furtive > .h4:nth-of-type(2) > A:nth-of-type(2)
+# #grid > .measure.p2 > .h4 > A
+# #buttons > .w100--s.my1.btn--blue
+# #buttons > .w100--s.my1.btn--green
+#
+#
+#
+# CSS Stats
+#
+# Total Selectors 159
+# Media Queries 3
+# Background Colors 17
+# Colors 23
+# Widths 3
+# Font Sizes 12
 ```
 
 ## Thanks to the following

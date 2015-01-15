@@ -3,7 +3,7 @@
 var program = require('commander');
 var scrutinize = require('..');
 
-var version = '0.0.1'
+var version = '1.0.0'
 
 console.log('Scrutinize CLI (' + version + ')');
 
