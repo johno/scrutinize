@@ -2,7 +2,7 @@
   "name": "scrutinize",
   "description": "Scrutinize a url by analyzing CSS, HTML, accessibility, images, pagespeed, etc.",
   "author": "John Otander",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "directories": {
     "test": "test"
