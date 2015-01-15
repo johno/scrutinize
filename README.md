@@ -10,11 +10,25 @@ Scrutinize a url by analyzing CSS, HTML, accessibility, images, pagespeed, etc.
 
 ```bash
 npm install --save scrutinize
-export GAPPS_API_KEY=<YOUR GAPPS API KEY>
 ```
 
-If you don't already have a Google Apps Developer API Key, you can get one here:
+This package has a few dependencies that recommend using a Google Apps Developer API Key. If you
+don't already have a Google Apps Developer API Key, you can get one here:
 <https://console.developers.google.com>.
+
+You can then set the key as an option:
+
+```javascript
+scrutinize('furtive.co', { key: mySecretAPIKey }, function(err, data) {
+  doStuffWith(data);
+});
+```
+
+Or, export it as an environment variable:
+
+```bash
+export GAPPS_API_KEY=<YOUR API KEY>
+```
 
 ## Usage
 
@@ -27,6 +41,12 @@ scrutinize('furtive.co', { key: process.env.GAPPS_API_KEY }, function(err, data)
 ```
 
 #### Using the CLI
+
+Install the package globally:
+
+```
+npm i -g scrutinize
+```
 
 ```bash
 scrutinize furtive.co
