@@ -19,17 +19,18 @@ module.exports = function scrutinize(url, options, callback) {
 
   callback = callback || function() {};
 
-  var scrutinyData = {};
-
   options.url.normalizedUrl = normalizeUrl(url);
   options.url.humanizedUrl = humanizeUrl(url);
 
-  pageSpeed(options.url, options, scrutinyData, function(err, data) {
-    a11y(options.url, scrutinyData, function(err, data) {
-      cssStats(options.url, scrutinyData, function(data) {
-        console.log('yoooo');
-        callback(err, data);
-      });
+  pageSpeed(options.url, options, {})
+    .then(function(data) {
+      return a11y(options.url, data);
+    })
+    .then(function(data) {
+      return cssStats(options.url, data);
+    }).then(function(data) {
+      callback(data);
+    }).catch(function(error) {
+      console.log(error);
     });
-  });
 }

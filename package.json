@@ -41,6 +41,7 @@
     "humanize-url": "^1.0.0",
     "normalize-url": "^1.0.0",
     "psi": "^1.0.3",
+    "q": "^1.1.2",
     "tmi": "^0.2.2"
   },
   "devDependencies": {
