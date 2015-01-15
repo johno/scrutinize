@@ -14,8 +14,11 @@ module.exports = function scrutinize(url, options, callback) {
 
   options = options || {};
   options.verbose = options.verbose || false;
-  options.key = options.key || process.env.GAPPS_API_KEY;
   options.url = { url: url };
+
+  if (!options.key && process.env.GAPPS_API_KEY) {
+    options.key = process.env.GAPPS_API_KEY;
+  }
 
   callback = callback || function() {};
 
