@@ -35,7 +35,6 @@
   "dependencies": {
     "a11y": "^0.2.3",
     "chalk": "^0.5.1",
-    "cli-table": "^0.3.1",
     "commander": "^2.6.0",
     "css-statistics": "^0.1.0",
     "get-css": "^0.1.0",
