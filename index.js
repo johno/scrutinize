@@ -25,12 +25,12 @@ module.exports = function scrutinize(url, options, callback) {
   options.url.normalizedUrl = normalizeUrl(url);
   options.url.humanizedUrl = humanizeUrl(url);
 
-  pageSpeed(options.url, options, {})
+  pageSpeed(options, {})
     .then(function(data) {
-      return a11y(options.url, data);
+      return a11y(options, data);
     })
     .then(function(data) {
-      return cssStats(options.url, data);
+      return cssStats(options, data);
     }).then(function(data) {
       callback(data);
     }).catch(function(error) {
