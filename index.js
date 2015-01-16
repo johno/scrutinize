@@ -3,9 +3,7 @@
 var a11y = require('./lib/a11y');
 var cssStats = require('./lib/css-stats');
 var pageSpeed = require('./lib/page-speed');
-
-var humanizeUrl = require('humanize-url');
-var normalizeUrl = require('normalize-url');
+var buildUrlObj = require('./lib/build-url-obj');
 
 module.exports = function scrutinize(url, options, callback) {
   if (typeof url != 'string') {
@@ -14,16 +12,13 @@ module.exports = function scrutinize(url, options, callback) {
 
   options = options || {};
   options.verbose = options.verbose || false;
-  options.url = { url: url };
+  options.url = buildUrlObj(url);
 
   if (!options.key && process.env.GAPPS_API_KEY) {
     options.key = process.env.GAPPS_API_KEY;
   }
 
   callback = callback || function() {};
-
-  options.url.normalizedUrl = normalizeUrl(url);
-  options.url.humanizedUrl = humanizeUrl(url);
 
   pageSpeed(options, {})
     .then(function(data) {

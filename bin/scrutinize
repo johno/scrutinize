@@ -2,6 +2,10 @@
 
 var program = require('commander');
 var scrutinize = require('..');
+var a11y = require('../lib/a11y');
+var pageSpeed = require('../lib/page-speed');
+var cssStats = require('../lib/css-stats');
+var buildUrlObj = require('../lib/build-url-obj');
 
 var version = '1.0.0'
 
@@ -12,7 +16,7 @@ program
   .description('scrutinize the accessibility of a url')
   .action(function(url) {
     try {
-      scrutinize(url, { verbose: true, skipCSS: true, skipPageSpeed: true }, function() {});
+      a11y({ url: buildUrlObj(url), verbose: true });
     } catch (e) {
       console.log('Scrutinize encountered an error: ' + e);
     }
@@ -23,7 +27,7 @@ program
   .description('scrutinize the CSS of a url')
   .action(function(url) {
     try {
-      scrutinize(url, { verbose: true, skipA11y: true, skipPageSpeed: true }, function() {});
+      cssStats({ url: buildUrlObj(url), verbose: true });
     } catch (e) {
       console.log('Scrutinize encountered an error: ' + e);
     }
@@ -34,19 +38,18 @@ program
   .description('scrutinize the page speed of a url')
   .action(function(url) {
     try {
-      scrutinize(url, { verbose: true, skipCSS: true, skipA11y: true }, function() {});
+      pageSpeed({ url: buildUrlObj(url), verbose: true });
     } catch (e) {
       console.log('Scrutinize encountered an error: ' + e);
     }
   });
-
 
 program
   .command('*')
   .description('scrutinize a url')
   .action(function(url) {
     try {
-      scrutinize(url, { verbose: true }, function() {});
+      scrutinize(url, { verbose: true });
     } catch (e) {
       console.log('Scrutinize encountered an error: ' + e);
     }
