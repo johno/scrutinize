@@ -3,9 +3,7 @@
 var a11y = require('./lib/a11y');
 var cssStats = require('./lib/css-stats');
 var pageSpeed = require('./lib/page-speed');
-
-var humanizeUrl = require('humanize-url');
-var normalizeUrl = require('normalize-url');
+var buildUrlObj = require('./lib/build-url-obj');
 
 module.exports = function scrutinize(url, options, callback) {
   if (typeof url != 'string') {
@@ -14,7 +12,7 @@ module.exports = function scrutinize(url, options, callback) {
 
   options = options || {};
   options.verbose = options.verbose || false;
-  options.url = { url: url };
+  options.url = buildUrlObj(url);
 
   if (!options.key && process.env.GAPPS_API_KEY) {
     options.key = process.env.GAPPS_API_KEY;
@@ -22,15 +20,12 @@ module.exports = function scrutinize(url, options, callback) {
 
   callback = callback || function() {};
 
-  options.url.normalizedUrl = normalizeUrl(url);
-  options.url.humanizedUrl = humanizeUrl(url);
-
-  pageSpeed(options.url, options, {})
+  pageSpeed(options, {})
     .then(function(data) {
-      return a11y(options.url, data);
+      return a11y(options, data);
     })
     .then(function(data) {
-      return cssStats(options.url, data);
+      return cssStats(options, data);
     }).then(function(data) {
       callback(data);
     }).catch(function(error) {
