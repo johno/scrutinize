@@ -37,7 +37,7 @@
     "chalk": "^0.5.1",
     "commander": "^2.6.0",
     "css-statistics": "^0.1.0",
-    "dom-stats": "0.0.2",
+    "dom-stats": "^0.1.0",
     "get-css": "^0.1.0",
     "humanize-url": "^1.0.0",
     "is-present": "0.0.1",
