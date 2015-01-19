@@ -104,6 +104,18 @@ scrutinize furtive.co
 # Colors 23
 # Widths 3
 # Font Sizes 12
+#
+#
+#
+# Furtive CSS - furtive.co
+#
+# Page Speed Score 89
+# Resources/Hosts 5/3
+# HTML Size 15.92 kB
+# Total HTML Elements 271
+# CSS Size 6.25 kB
+# JS Size 25.75 kB
+# IMG Size 4.55 kB
 ```
 
 ## Thanks to the following
