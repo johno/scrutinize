@@ -39,6 +39,8 @@
     "css-statistics": "^0.1.0",
     "dom-stats": "^0.1.0",
     "get-css": "^0.1.0",
+    "has-pseudo-class": "0.0.1",
+    "has-pseudo-element": "0.0.1",
     "humanize-url": "^1.0.0",
     "is-present": "0.0.1",
     "is-vendor-prefixed": "0.0.1",
