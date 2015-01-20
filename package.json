@@ -41,6 +41,7 @@
     "get-css": "^0.1.0",
     "humanize-url": "^1.0.0",
     "is-present": "0.0.1",
+    "is-vendor-prefixed": "0.0.1",
     "normalize-url": "^1.0.0",
     "pretty-bytes": "^1.0.2",
     "psi": "^1.0.3",
