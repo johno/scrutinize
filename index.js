@@ -49,11 +49,13 @@ function generateReport(scrutinyData) {
     chalk.bgWhite.black('\n\n' + scrutinyData.title + ' - ' + scrutinyData.url + '\n'),
     chalk.underline('Page Speed Score') + ' ' + scrutinyData.score,
     chalk.underline('Resources/Hosts') + ' ' + scrutinyData.psi.numberResources + '/' + scrutinyData.psi.numberHosts,
-    chalk.underline('HTML Size') + ' ' + scrutinyData.htmlSize,
+    chalk.underline('Total Request Size') + ' ' + scrutinyData.totalRequestSizePretty,
+    chalk.underline('Total Page Size') + ' ' + scrutinyData.totalPageSizePretty,
+    chalk.underline('HTML Size') + ' ' + scrutinyData.htmlSizePretty,
     chalk.underline('Total HTML Elements') + ' ' + scrutinyData.domStats.totalTags,
-    chalk.underline('CSS Size') + ' ' + scrutinyData.cssSize,
-    chalk.underline('JS Size') + ' ' + scrutinyData.jsSize,
-    chalk.underline('IMG Size') + ' ' + scrutinyData.imageSize,
+    chalk.underline('CSS Size') + ' ' + scrutinyData.cssSizePretty,
+    chalk.underline('JS Size') + ' ' + scrutinyData.jsSizePretty,
+    chalk.underline('IMG Size') + ' ' + scrutinyData.imageSizePretty,
   ];
 
   console.log(reportStringLines.join('\n'))
