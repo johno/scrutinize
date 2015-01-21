@@ -8,7 +8,7 @@ var domStats = require('../lib/dom-stats');
 var cssStats = require('../lib/css-stats');
 var buildUrlObj = require('../lib/build-url-obj');
 
-var version = '1.2.2'
+var version = '1.3.1';
 
 console.log('Scrutinize CLI (' + version + ')');
 
