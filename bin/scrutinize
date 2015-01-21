@@ -4,6 +4,7 @@ var program = require('commander');
 var scrutinize = require('..');
 var a11y = require('../lib/a11y');
 var pageSpeed = require('../lib/page-speed');
+var domStats = require('../lib/dom-stats');
 var cssStats = require('../lib/css-stats');
 var buildUrlObj = require('../lib/build-url-obj');
 
@@ -39,6 +40,17 @@ program
   .action(function(url) {
     try {
       pageSpeed({ url: buildUrlObj(url), verbose: true });
+    } catch (e) {
+      console.log('Scrutinize encountered an error: ' + e);
+    }
+  });
+
+program
+  .command('dom [url]')
+  .description('scrutinize the dom of a url')
+  .action(function(url) {
+    try {
+      domStats({ url: buildUrlObj(url), verbose: true });
     } catch (e) {
       console.log('Scrutinize encountered an error: ' + e);
     }
