@@ -23,14 +23,9 @@ module.exports = function scrutinize(url, options, callback) {
   callback = callback || function() {};
 
   pageSpeed(options, { url: url })
-    .then(function(data) {
-      return a11y(options, data);
-    })
-    .then(function(data) {
-      return cssStats(options, data);
-    }).then(function(data) {
-      return domStats(options, data);
-    })
+    .then(function(data) { return a11y(options, data); })
+    .then(function(data) { return cssStats(options, data); })
+    .then(function(data) { return domStats(options, data); })
     .then(function(data) {
       if (options.verbose) {
         generateReport(data);
@@ -42,7 +37,6 @@ module.exports = function scrutinize(url, options, callback) {
       console.log(error);
     });
 }
-
 
 function generateReport(scrutinyData) {
   var reportStringLines = [
