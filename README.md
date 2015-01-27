@@ -120,11 +120,11 @@ scrutinize furtive.co
 
 ## Thanks to the following
 
-* cssstats
-* a11y
-* psi
-* commander
-* cli-table
+* [cssstats](https://github.com/jxnblk/css-statistics)
+* [a11y](https://github.com/addyosmani/a11y)
+* [psi](https://github.com/addyosmani/psi)
+* [dom-stats](https://github.com/johnotander/dom-stats)
+* [commander](https://github.com/tj/commander.js)
 
 ## License
 
