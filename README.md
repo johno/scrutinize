@@ -125,6 +125,7 @@ scrutinize furtive.co
 * [psi](https://github.com/addyosmani/psi)
 * [dom-stats](https://github.com/johnotander/dom-stats)
 * [commander](https://github.com/tj/commander.js)
+* [chalk](https://github.com/sindresorhus/chalk)
 
 ## License
 
