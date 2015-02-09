@@ -36,20 +36,20 @@
     "a11y": "^0.2.3",
     "chalk": "^0.5.1",
     "commander": "^2.6.0",
-    "cssstats": "^1.0.1",
+    "cssstats": "^1.2.1",
     "dom-stats": "^0.1.0",
     "get-css": "git://github.com/johnotander/get-css",
     "has-pseudo-class": "0.0.1",
     "has-pseudo-element": "0.0.1",
-    "humanize-url": "^1.0.0",
+    "humanize-url": "^1.0.1",
     "is-blank": "0.0.1",
     "is-present": "0.0.1",
     "is-vendor-prefixed": "0.0.1",
-    "normalize-url": "^1.0.0",
+    "normalize-url": "^1.0.2",
     "pretty-bytes": "^1.0.2",
-    "psi": "^1.0.3",
+    "psi": "^1.0.4",
     "q": "^1.1.2",
-    "tmi": "^0.2.2"
+    "tmi": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "*"
