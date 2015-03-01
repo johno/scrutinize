@@ -38,7 +38,7 @@
     "commander": "^2.6.0",
     "cssstats": "johnotander/css-statistics",
     "dom-stats": "^0.1.0",
-    "get-css": "johnotander/get-css",
+    "get-css": "^0.3.1",
     "has-pseudo-class": "0.0.1",
     "has-pseudo-element": "0.0.1",
     "humanize-url": "^1.0.1",
