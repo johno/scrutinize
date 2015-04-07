@@ -33,23 +33,23 @@
   },
   "homepage": "https://github.com/johnotander/scrutinize",
   "dependencies": {
-    "a11y": "^0.2.3",
-    "chalk": "^0.5.1",
-    "commander": "^2.6.0",
+    "a11y": "^0.3.0",
+    "chalk": "^1.0.0",
+    "commander": "^2.7.1",
     "cssstats": "johnotander/css-statistics",
     "dom-stats": "^0.1.0",
-    "get-css": "^0.3.1",
+    "get-css": "^1.0.1",
     "has-pseudo-class": "0.0.1",
     "has-pseudo-element": "0.0.1",
     "humanize-url": "^1.0.1",
     "is-blank": "0.0.1",
     "is-present": "0.0.1",
     "is-vendor-prefixed": "0.0.1",
-    "normalize-url": "^1.0.2",
-    "pretty-bytes": "^1.0.2",
-    "psi": "^1.0.4",
-    "q": "^1.1.2",
-    "tmi": "^1.0.1"
+    "normalize-url": "^1.2.0",
+    "pretty-bytes": "^1.0.4",
+    "psi": "^1.0.6",
+    "q": "^1.2.0",
+    "tmi": "^1.0.2"
   },
   "devDependencies": {
     "mocha": "*"
