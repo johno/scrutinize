@@ -18,23 +18,6 @@ scrutinize('google.com')
   .catch(handleError)
 ```
 
-This package has a few dependencies that recommend using a Google Apps Developer API Key.
-If you don't already have a Google Apps Developer API Key, you can get one from [the Google developer console](https://console.developers.google.com).
-
-###### You can then set the key as an option
-
-```javascript
-scrutinize('furtive.co', { key: mySecretAPIKey })
-  .then(doStuff)
-  .catch(handleError)
-```
-
-###### Or, export it as an environment variable:
-
-```bash
-export GAPPS_API_KEY=my-api-key-123
-```
-
 ## Related
 
 - [cssstats](https://github.com/jxnblk/css-statistics)
