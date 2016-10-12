@@ -1,56 +1,41 @@
-'use strict';
+'use strict'
 
-var a11y = require('./lib/a11y');
-var cssStats = require('./lib/css-stats');
-var pageSpeed = require('./lib/page-speed');
-var buildUrlObj = require('./lib/build-url-obj');
-var domStats = require('./lib/dom-stats');
-var chalk = require('chalk');
+const isBlank = require('is-blank')
+const a11y = require('a11y')
+const tmi = require('a11y')
+const psi = require('psi')
+const getCss = require('get-css')
+const cssstats = require('cssstats')
+const pify = require('pify')
+const normalizeUrl = require('normalize-url')
 
-module.exports = function scrutinize(url, options, callback) {
-  if (typeof url != 'string') {
-    throw new TypeError('scrutinize expects a url');
+module.exports = (url, opts) => {
+  if (isBlank(url) || typeof url !== 'string') {
+    throw new TypeError('scrutinize expected a url as a string')
   }
 
-  options = options || {};
-  options.verbose = options.verbose || false;
-  options.url = buildUrlObj(url);
+  url = normalizeUrl(url)
 
-  if (!options.key && process.env.GAPPS_API_KEY) {
-    options.key = process.env.GAPPS_API_KEY;
-  }
+  const options = Object.assign({}, opts || {}, {
+    getCss: {
+      ignoreCerts: true,
+      timeout: 2000
+    }
+  })
 
-  callback = callback || function() {};
 
-  pageSpeed(options, { url: url })
-    .then(function(data) { return a11y(options, data); })
-    .then(function(data) { return cssStats(options, data); })
-    .then(function(data) { return domStats(options, data); })
-    .then(function(data) {
-      if (options.verbose) {
-        generateReport(data);
-      }
-
-      callback(data);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  return new Promise((resolve, reject) => {
+    Promise.all([
+      css(url, options.getCss),
+      pagespeed(url, options.psi),
+      accessibility(url)
+    ])
+    .then(results => results.reduce((p, c) => Object.assign({}, p, c)))
+    .then(resolve)
+    .catch(reject)
+  })
 }
 
-function generateReport(scrutinyData) {
-  var reportStringLines = [
-    chalk.bgWhite.black('\n\n' + scrutinyData.title + ' - ' + scrutinyData.url + '\n'),
-    chalk.underline('Page Speed Score') + ' ' + scrutinyData.score,
-    chalk.underline('Resources/Hosts') + ' ' + scrutinyData.psi.numberResources + '/' + scrutinyData.psi.numberHosts,
-    chalk.underline('Total Request Size') + ' ' + scrutinyData.totalRequestSizePretty,
-    chalk.underline('Total Page Size') + ' ' + scrutinyData.totalPageSizePretty,
-    chalk.underline('HTML Size') + ' ' + scrutinyData.htmlSizePretty,
-    chalk.underline('Total HTML Elements') + ' ' + scrutinyData.domStats.totalTags,
-    chalk.underline('CSS Size') + ' ' + scrutinyData.cssSizePretty,
-    chalk.underline('JS Size') + ' ' + scrutinyData.jsSizePretty,
-    chalk.underline('IMG Size') + ' ' + scrutinyData.imageSizePretty,
-  ];
-
-  console.log(reportStringLines.join('\n'))
-}
+const css = (url, options) => getCss(url, options).then(css => ({ css: cssstats(css.css) }))
+const pagespeed = (url, options) => psi(url, options).then(data => ({ psi: data }))
+const accessibility = url => pify(a11y)(url).then(data => ({ a11y: data }))
