@@ -18,6 +18,36 @@ scrutinize('google.com')
   .catch(handleError)
 ```
 
+##### Using the cli
+
+```sh
+npm i -g scrutinize
+```
+
+```sh
+❯ scrutinize -h
+
+  ➟ Scrutinize the performance and accessibility of a url
+
+  Usage
+
+      $ scrutinized [url] [options...]
+
+  Options
+
+      -h, --help - Get help menu
+      -v, --version - Get the version
+      -a, --a11y - Only return accessibility
+      -p, --psi - Only return page speed insights
+      -c, --css - Only return cssstats
+      -d, --dom - Only return dom stats
+
+  Examples
+
+      $ scrutinize johnotander.com
+      $ scrutinize johnotander.com --css
+```
+
 ## Related
 
 - [cssstats](https://github.com/jxnblk/css-statistics)
