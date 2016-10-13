@@ -1,4 +1,4 @@
-# scrutinize [![Build Status](https://secure.travis-ci.org/johnotander/scrutinize.png?branch=master)](https://travis-ci.org/johnotander/scrutinize) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+# ➟ scrutinize [![Build Status](https://secure.travis-ci.org/johnotander/scrutinize.png?branch=master)](https://travis-ci.org/johnotander/scrutinize) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 Scrutinize a url by analyzing its css, html, a11y, images, and pagespeed score.
 
@@ -16,6 +16,36 @@ const scrutinize = require('scrutinize')
 scrutinize('google.com')
   .then(doStuff)
   .catch(handleError)
+```
+
+##### Using the cli
+
+```sh
+npm i -g scrutinize
+```
+
+```sh
+❯ scrutinize -h
+
+  ➟ Scrutinize the performance and accessibility of a url
+
+  Usage
+
+      $ scrutinized [url] [options...]
+
+  Options
+
+      -h, --help - Get help menu
+      -v, --version - Get the version
+      -a, --a11y - Only return accessibility
+      -p, --psi - Only return page speed insights
+      -c, --css - Only return cssstats
+      -d, --dom - Only return dom stats
+
+  Examples
+
+      $ scrutinize johnotander.com
+      $ scrutinize johnotander.com --css
 ```
 
 ## Related

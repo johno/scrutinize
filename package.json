@@ -1,9 +1,16 @@
 {
   "name": "scrutinize",
-  "description": "Scrutinize the performance and accessibility of a url",
+  "description": "➟ Scrutinize the performance and accessibility of a url",
   "author": "John Otander",
   "version": "2.0.0-beta.1",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "bin": {
+    "scrutinize": "cli.js"
+  },
   "scripts": {
     "test": "ava -v"
   },
@@ -20,15 +27,18 @@
   "license": "MIT",
   "dependencies": {
     "a11y": "^0.4.1",
+    "columnify": "^1.5.4",
     "cssstats": "^3.0.0-beta.2",
     "dom-stats": "^2.0.0",
     "get-css": "^1.2.1",
     "got": "^6.5.0",
     "is-blank": "1.1.0",
     "is-present": "1.0.0",
+    "meow": "^3.7.0",
     "normalize-url": "^1.6.1",
     "pify": "^2.3.0",
     "psi": "^2.0.4",
+    "shtml": "^0.1.0",
     "tmi": "^1.0.3"
   },
   "devDependencies": {
