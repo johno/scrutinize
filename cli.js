@@ -2,6 +2,8 @@
 
 const meow = require('meow')
 const shtml = require('shtml')
+const isBlank = require('is-blank')
+const isPresent = require('is-present')
 const scrutinize = require('./')
 
 const cli = meow(shtml`
@@ -31,4 +33,21 @@ const cli = meow(shtml`
     c: 'css',
     d: 'dom'
   }
+})
+
+const url = cli.input[0]
+
+scrutinize(url).then(data => {
+  let dataToShow = {}
+
+  if (isPresent(cli.flags)) {
+    if (cli.flags.dom) dataToShow.dom = data.dom
+    if (cli.flags.a11y) dataToShow.a11y = data.a11y
+    if (cli.flags.css) dataToShow.css = data.css
+    if (cli.flags.psi) dataToShow.psi = data.psi
+  } else {
+    dataToShow = data
+  }
+
+  console.log(dataToShow)
 })
