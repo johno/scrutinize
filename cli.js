@@ -4,6 +4,7 @@ const meow = require('meow')
 const shtml = require('shtml')
 const isBlank = require('is-blank')
 const isPresent = require('is-present')
+const columnify = require('columnify')
 const scrutinize = require('./')
 
 const cli = meow(shtml`
@@ -49,5 +50,9 @@ scrutinize(url).then(data => {
     dataToShow = data
   }
 
-  console.log(dataToShow)
+  renderOutput(dataToShow)
 })
+
+const renderOutput = data => {
+  
+}

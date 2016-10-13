@@ -27,6 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "a11y": "^0.4.1",
+    "columnify": "^1.5.4",
     "cssstats": "^3.0.0-beta.2",
     "dom-stats": "^2.0.0",
     "get-css": "^1.2.1",
